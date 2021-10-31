@@ -1,0 +1,101 @@
+
+#canvas {
+    background-color: aqua;
+    width: 74%;
+    display: none;
+}
+
+body {
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+    background: rgb(28,10,46);
+    background: linear-gradient(90deg, rgba(28,10,46,1) 0%, rgba(46,8,28,1) 51%, rgba(36,9,8,1) 100%);
+}
+
+#main_div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 92vh;
+}
+
+/* letf side */
+
+#left_side {
+    /* background-color: tomato; */
+    width: 20%;
+    height: 70%;
+    margin: 0 auto;
+    padding: 6% 0;
+    display: flex;
+    align-items: baseline;
+    flex-direction: column;
+    padding-right: 2%;
+    background-color: rgba(0, 0, 0, 0.3);
+
+} 
+
+#left_side h1 {
+    text-align: center;
+    padding: 0;
+    font-size: 2vw;
+}
+
+#left_side li {
+    text-align: left;
+    padding-top: 20px;
+    text-decoration: none;
+    list-style: none;
+    font-size: 1.25vw;
+
+}
+
+/* central div  */
+
+#game_intro {
+    background-image: url(/images/intro.webp);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 48%;
+    height: 94%;
+    align-items: center;
+    padding-left: 2px;
+}
+
+.button {
+    cursor: pointer;
+}
+
+.button:hover {background-color: #3e8e41}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+
+/* right div */
+
+#right_side {
+    /* background-color: tomato; */
+    width: 20%;
+    height: 70%;
+    margin: 0 auto;
+    padding: 6% 0;
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.3);
+
+
+}
+
+
+#right_side li {
+    text-align: left;
+    padding-top: 20px;
+    text-decoration: none;
+    list-style: none;
+    font-size: 1.25vw;
+
+}

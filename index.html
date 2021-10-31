@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Game</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <style>@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+</style>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel='stylesheet' type='text/css' media='screen' href='/styles.css'>
+    
+    
+</head>
+
+
+<body>
+
+    <div id= "main_div">
+
+        <!-- Left div -->
+        <div id="left_side"> 
+            <h1>Red light, Green light</h1>
+            <ul>
+                <li>Move all players until the red line</li>
+                <li>Don't move the players while the doll is loking to you</li>
+                
+            </ul>
+
+        </div>
+   
+        <!-- Central div -->
+
+        <div id="game_intro">
+            <img src="" alt="" class="" />
+            <br />
+            <button class="button">Start</button>
+        </div>
+
+
+      
+
+        <!-- Right div -->
+        <div id= "right_side">
+
+            <ul>
+                <li>Use 1-9 keyboard to move each player</li>
+        
+                <li>When all the players are safe, you win!</li>
+            </ul>
+
+
+        </div>
+
+      
+
+
+
+        <script src='/script.js'></script>
+    </body>
+
+    </div>
+    <div id="game-board">
+        <canvas id="canvas" width="1500" height="1000"></canvas>
+    </div>
+</body>
+</html>
