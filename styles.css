@@ -61,19 +61,46 @@ body {
     height: 94%;
     align-items: center;
     padding-left: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .button {
     cursor: pointer;
+    background-color: black;
+    color: white;
+    font-family: 'Press Start 2P', cursive;
+    padding: 16px 45px;
+    animation: moveInBottom 5s ease-out;
+    animation-fill-mode: backwards;
+    font-size: 32px;
+    margin-top: 200px;
+    
+
 }
 
-.button:hover {background-color: #3e8e41}
+.button:hover {
+    background-color: rgba(46, 8, 28);
+    color: rgba(202, 178, 178);
+}
 
 .button:active {
-  background-color: #3e8e41;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
+
+/* @keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+} */
 
 
 /* right div */
