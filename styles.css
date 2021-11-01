@@ -27,7 +27,8 @@ body {
 #game-board {
     display: none;
     width: 1000px;
-    margin-right: 250px;
+    margin-right: 100px;
+    margin-left: 100px;
     /* justify-self: flex-end;  */
 }
 
@@ -38,7 +39,7 @@ body {
 #left-side {
     /* background-color: tomato; */
     width: 20%;
-    height: 70%;
+    height: 75%;
     /* margin: 0 auto; */
     padding: 6% 0;
     display: flex;
