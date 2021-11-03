@@ -18,6 +18,8 @@
 
 <body>
 
+  
+
     <div id= "main_div">
         
         <div id="game-board">
@@ -25,8 +27,9 @@
         </div>
 
 
-        <!-- Left div -->
+        <!-- Left div --> 
         <div id="left-side"> 
+
             <h1>Red light, Green light</h1>
             <ul>
                 <li>Move all players until the red line</li>
@@ -36,8 +39,6 @@
 
         </div>
 
-
-   
         <!-- Central div -->
 
         <div id="game-intro" >
@@ -49,16 +50,22 @@
         <!-- Right div -->
         <div id= "right_side">
             <button class="button" id="sound-button">Sound </button>
+            <div id="stopwatch">
+                01:30
+            </div>
                    <ul>
                 <li>Use 1-9 keyboard to move each player</li>
                 <li>When all the players are safe, you win!</li>
             </ul>
         </div>
-
-    
-
     </div>
-    
+    <div id="gameOverModal" class="modal">
+        <div class="modal-content">
+            <button id="re-start-button">Play Again</button>
+            <p>Game Over!</p>
+          </div>
+        
+        </div>
 
     <script type="text/javascript" src="script.js"></script>
 

@@ -3,25 +3,79 @@ const ctx = canvas.getContext('2d')
 
 // canvas.style.visibility = "hidden"
 
-//Start button
+//Elements of HTML
 
-let startButton = document.getElementById("start-button")
-let leftDiv = document.getElementById("left-side")
-let centralDiv = document.getElementById("game-intro")
-let gameBoard = document.getElementById("game-board")
-let mainDiv = document.getElementById("main_div")
+const startButton = document.getElementById("start-button")
+const leftDiv = document.getElementById("left-side")
+const centralDiv = document.getElementById("game-intro")
+const gameBoard = document.getElementById("game-board")
+const mainDiv = document.getElementById("main_div")
+const gameOverModal = document.getElementById("gameOverModal")
+const playAgainButton = document.getElementById("re-start-button")
 
+//modal.style.display = "block";
 
-// function remove(elem) {
-//   elem.parentNode.removeChild(elem);
-// }
+//timer
+const timer = document.getElementById('stopwatch')
 
-startButton.onclick = ()=>{
-leftDiv.style.display = "none"
-centralDiv.style.display = "none"
-gameBoard.style.display = "block"
-mainDiv.style.justifyContent = "flex-end"
+let min = 01
+let sec = 30
+let stoptime = true
+
+function realTime() {
+  return (min * 60) + sec
 }
+
+function startTimer() {
+  if (stoptime == true) {
+        stoptime = false
+        timerCycle()
+    }
+}
+function stopTimer() {
+  if (stoptime == false) {
+    stoptime = true
+  }
+}
+
+function timerCycle() {
+  if (stoptime == false) {
+    sec = parseInt(sec)
+    min = parseInt(min)
+
+    sec = sec - 1
+
+    if (sec == 0 && min == 0) {
+      stopTimer()
+    }
+    if (sec == 0 && min == 1) {
+      min = 0
+      sec = 59
+    }
+    if (sec < 10 || sec == 0) {
+      sec = '0' + sec
+    }
+    if (min < 10 || min == 0) {
+      min = '0' + min
+    }
+     timer.innerHTML = min + ':' + sec
+
+    setTimeout("timerCycle()", 1000)
+  }
+}
+
+function resetTimer() {
+  timer.innerHTML = '01:30'
+}
+
+
+//Start button
+// startButton.addEventListener("click", function(){
+//   setInterval(function(){
+//     drawDoll1()
+//   }, 2000)
+// })
+
 
 
 //IMAGENES
@@ -56,47 +110,45 @@ imageLinks.forEach((imagen)=>{
 
 class Players {
   constructor(ownY){
-    this.x = 0;
-    this.y = ownY;
-    this.speedX = 0;
-    this.speedY = 0;
-    this.width = 110;
-    this.height = 170;
+    this.x = 0
+    this.y = ownY
+    this.speedX = 0
+    this.speedY = 0
+    this.width = 110
+    this.height = 170
+    this.inMovement = false
   }
 }
-console.log(loadedImages)
+
 
 //Creating Players
 
 let arrayOfPlayers = []
 
-let ySum = 180
+let ySum = 175
 const player1 = new Players(ySum)
 arrayOfPlayers.push(player1)
-ySum += 100
+ySum += 97
 const player2 = new Players(ySum)
 arrayOfPlayers.push(player2)
-ySum += 100
+ySum += 97
 const player3 = new Players(ySum)
 arrayOfPlayers.push(player3)
-ySum += 100
+ySum += 97
 const player4 = new Players(ySum)
 arrayOfPlayers.push(player4)
-ySum += 100
+ySum += 97
 const player5 = new Players(ySum)
 arrayOfPlayers.push(player5)
-ySum += 100
+ySum += 97
 const player6 = new Players(ySum)
 arrayOfPlayers.push(player6)
-ySum += 100
+ySum += 96
 const player7 = new Players(ySum)
 arrayOfPlayers.push(player7)
-ySum += 100
+ySum += 96
 const player8 = new Players(ySum)
 arrayOfPlayers.push(player8)
-
-// console.log(arrayOfPlayers[1])
-
 
 //Drawing Players
 
@@ -111,48 +163,15 @@ const drawPlayers = ()=>{
   ctx.drawImage(loadedImages.player8, player8.x, player8.y, player8.width, player8.height)  
 }
 
+//Audio function
 
-//Keydown event 
+let dollSoundLevel1 = new Audio('/sounds/doll-sound-8sec.mpeg')
+    dollSoundLevel1.preload = 'auto'
 
-document.addEventListener('keydown', (event)=>{
-  for(let i = 0; i < arrayOfPlayers.length; i++){
-    if(event.which === 32){
-      arrayOfPlayers[i].speedX = Math.random() * (1 - 0.1 +1) + 0.1
-    }
-  }
-})
+    
 
-//Keyup Event
 
-document.addEventListener('keyup', (event)=> {
-  if(event.which === 49){
-    arrayOfPlayers[0].speedX = 0
-  }
-  if(event.which === 50){
-    arrayOfPlayers[1].speedX = 0
-  }
-  if(event.which === 51){
-    arrayOfPlayers[2].speedX = 0
-  }
-  if(event.which === 52){
-    arrayOfPlayers[3].speedX = 0
-  }
-  if(event.which === 53){
-    arrayOfPlayers[4].speedX = 0
-  }
-  if(event.which === 54){
-    arrayOfPlayers[5].speedX = 0
-  }
-  if(event.which === 55){
-    arrayOfPlayers[6].speedX = 0
-  }
-  if(event.which === 56){
-    arrayOfPlayers[7].speedX = 0
-  }
-  if(event.which === 57){
-    arrayOfPlayers[8].speedX = 0
-  }
-})
+
 //Check Boundaries Function
 
 const checkBounds = ()=>{ 
@@ -167,48 +186,184 @@ const checkBounds = ()=>{
       player.x = 0
     }   
   }
- 
 }
 
-//Update the Player images
+//Update the Players' images
 const updatePlayers = ()=>{    
   for(let j = 0; j < arrayOfPlayers.length; j++){
   arrayOfPlayers[j].x += arrayOfPlayers[j].speedX 
   checkBounds()
-}
-}
+}}
 
 
 const clearCanvas = ()=>{        
-  ctx.clearRect(0, 0, 1500, 1500)
+  ctx.clearRect(0, 0, canvas.width, canvas.height)
+}
+
+//Create the doll images
+
+const doll1 = new Image()
+doll1.src = "/images/evil_doll_1.png"
+
+const drawDoll1 = ()=>{
+  ctx.drawImage(doll1, 1224, 0, 276, 276)
+}
+
+const doll2 = new Image()
+doll2.src = "/images/evil_doll_2.png"
+
+const drawDoll2 = ()=>{
+  ctx.drawImage(doll2, 1224, 0, 276, 276)
 }
 
 
-// //Doll Class
-
-// class Doll {
-//   constructor(){
-//     this.x = 200;
-//     this.y = 0;
-//     this.speedX = 0;
-//     this.speedY = 0;
-//     this.width = 80;
-//     this.height = 130;
-//   }
-// }
+//Functions
 
 
+function checkMovementPlayer() {
+  for(let i = 0; i < arrayOfPlayers.length; i++){
+    if(arrayOfPlayers[i].speedX !== 0){
+      return true
+    } 
+  }
+  return false
+}
 
-window.addEventListener("load",() => {
-}) 
+let showDoll1 = true;
+let roundCounter = 0
+ function gameLogic1(){
+   setInterval(function () {
+    showDoll1 = !showDoll1
+    roundCounter++
+   },4000)
+   
+ 
+   }
+
+function gameOver(){
+    if((roundCounter >= 1) && (roundCounter % 2 !== 0) && checkMovementPlayer()) {
+     dollSoundLevel1.pause()
+     gameOverModal.style.display = "block";
+     }
+}
+
+const startGame = () => {
+  leftDiv.style.display = "none"
+  centralDiv.style.display = "none"
+  gameBoard.style.display = "block"
+  mainDiv.style.justifyContent = "flex-end"
+
+  dollSoundLevel1.play()
+  dollSoundLevel1.loop = true
+
+  startTimer()
+  gameLogic1()
+  updateCanvas()
+}
+
+
 
 const updateCanvas = ()=>{
   if(imageLinks.length === counterForLoadedImages){
-    clearCanvas()
-    drawPlayers()
+    clearCanvas()  
     updatePlayers()
+    checkMovementPlayer()
+    gameOver()
+
+    if(showDoll1){
+      drawDoll1();
+      
+    }else{
+      drawDoll2();
+
+    }
+
+    drawPlayers()
+    console.log(roundCounter)
   }
-  requestAnimationFrame(updateCanvas) //Activa un loop infinito. Este loop va a la velocidad de la tasa de refresco de la pantalla en la que se está viendo el juego. Le vamos a pasar como argumento la función donde estamos llamando al requestAnimationFrame (en este caso, updateCanvas)
+requestAnimationFrame(updateCanvas) //Activa un loop infinito. Este loop va a l
 }
 
-updateCanvas()
+console.log(checkMovementPlayer())
+
+
+// updateCanvas()
+
+
+window.addEventListener('load', (event) => { //event listeners, algun código que quieras que se ejecute   despues de la carga
+  startButton.addEventListener('click', startGame )
+
+  
+
+  //Keyup Event
+  document.addEventListener('keyup', (event)=> {
+    if(event.which === 49){
+      arrayOfPlayers[0].speedX = 0
+    }
+    if(event.which === 50){
+      arrayOfPlayers[1].speedX = 0
+    }
+    if(event.which === 51){
+      arrayOfPlayers[2].speedX = 0
+    }
+    if(event.which === 52){
+      arrayOfPlayers[3].speedX = 0
+    }
+    if(event.which === 53){
+      arrayOfPlayers[4].speedX = 0
+    }
+    if(event.which === 54){
+      arrayOfPlayers[5].speedX = 0
+    }
+    if(event.which === 55){
+      arrayOfPlayers[6].speedX = 0
+    }
+    if(event.which === 56){
+      arrayOfPlayers[7].speedX = 0
+    }
+    if(event.which === 57){
+      arrayOfPlayers[8].speedX = 0
+    }
+  })
+
+  //Keydown event // START GAME
+  document.addEventListener('keydown', (event)=>{
+    for(let i = 0; i < arrayOfPlayers.length; i++){
+      if(event.which === 32){
+        arrayOfPlayers[i].speedX = Math.random() * (1.5 - 0.5 +1) + 0.5
+      }
+    }
+  })
+
+  
+});
+
+
+
+
+
+ //setInterval contador
+ //cuando ese contador llegue a lo que tu quieres
+ //se pinta una muñeca u otra
+
+
+//Doll Sound
+
+// let dollSoundLevel1 = ""
+// window.addEventListener('load', ()=>{
+//   dollSoundLevel1 = new Audio('/sounds/sound-8seconds.mp3')
+//   dollSoundLevel1.preload = 'auto'
+// })
+
+
+//Intro sound
+
+
+  // introSound = new Audio('./sounds/intro-sound.mp3')
+
+// function introPlay() {
+//   introSound.autoplay()
+// }
+
+// introPlay()
+
