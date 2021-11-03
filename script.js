@@ -12,73 +12,11 @@ const gameBoard = document.getElementById("game-board")
 const mainDiv = document.getElementById("main_div")
 const gameOverModal = document.getElementById("gameOverModal")
 const playAgainButton = document.getElementById("re-start-button")
-
-//modal.style.display = "block";
-
-//timer
-const timer = document.getElementById('stopwatch')
-
-let min = 01
-let sec = 30
-let stoptime = true
-
-function realTime() {
-  return (min * 60) + sec
-}
-
-function startTimer() {
-  if (stoptime == true) {
-        stoptime = false
-        timerCycle()
-    }
-}
-function stopTimer() {
-  if (stoptime == false) {
-    stoptime = true
-  }
-}
-
-function timerCycle() {
-  if (stoptime == false) {
-    sec = parseInt(sec)
-    min = parseInt(min)
-
-    sec = sec - 1
-
-    if (sec == 0 && min == 0) {
-      stopTimer()
-    }
-    if (sec == 0 && min == 1) {
-      min = 0
-      sec = 59
-    }
-    if (sec < 10 || sec == 0) {
-      sec = '0' + sec
-    }
-    if (min < 10 || min == 0) {
-      min = '0' + min
-    }
-     timer.innerHTML = min + ':' + sec
-
-    setTimeout("timerCycle()", 1000)
-  }
-}
-
-function resetTimer() {
-  timer.innerHTML = '01:30'
-}
+const levelUpModal = document.getElementById("level2-modal")
+const playLevel2Button = document.getElementById("continue")
 
 
-//Start button
-// startButton.addEventListener("click", function(){
-//   setInterval(function(){
-//     drawDoll1()
-//   }, 2000)
-// })
-
-
-
-//IMAGENES
+//IMAGE
 
 const loadedImages = {}
 
@@ -107,7 +45,6 @@ imageLinks.forEach((imagen)=>{
 })
 
 //Players Class
-
 class Players {
   constructor(ownY){
     this.x = 0
@@ -117,8 +54,7 @@ class Players {
     this.width = 110
     this.height = 170
     this.inMovement = false
-  }
-}
+  }}
 
 
 //Creating Players
@@ -163,30 +99,21 @@ const drawPlayers = ()=>{
   ctx.drawImage(loadedImages.player8, player8.x, player8.y, player8.width, player8.height)  
 }
 
-//Audio function
-
-let dollSoundLevel1 = new Audio('/sounds/doll-sound-8sec.mpeg')
-    dollSoundLevel1.preload = 'auto'
-
-    
-
-
-
 //Check Boundaries Function
+let playerWin = false
+
 
 const checkBounds = ()=>{ 
   for (let i = 0; i < arrayOfPlayers.length; i++) {
     const player = arrayOfPlayers[i]
-
     if(player.x > 1300){
       player.x = 1300
-    }
-  
+      playerWin = true
     if(player.x < 0){
       player.x = 0
-    }   
+    }
   }
-}
+}}
 
 //Update the Players' images
 const updatePlayers = ()=>{    
@@ -195,10 +122,15 @@ const updatePlayers = ()=>{
   checkBounds()
 }}
 
-
 const clearCanvas = ()=>{        
   ctx.clearRect(0, 0, canvas.width, canvas.height)
 }
+
+
+//Doll Audio function
+
+let dollSoundLevel1 = new Audio('/sounds/doll-sound-8sec.mpeg')
+    dollSoundLevel1.preload = 'auto'
 
 //Create the doll images
 
@@ -219,33 +151,86 @@ const drawDoll2 = ()=>{
 
 //Functions
 
+function checkAllPlayersFinish() {
+  for(let i = 0; i < arrayOfPlayers.length; i++){
+    if(arrayOfPlayers[i].x !== 1300){
+      return false
+    } 
+  }
+  return true
+}
+
+
 
 function checkMovementPlayer() {
   for(let i = 0; i < arrayOfPlayers.length; i++){
-    if(arrayOfPlayers[i].speedX !== 0){
+    // console.log(arrayOfPlayers[7].speedX)
+    if(arrayOfPlayers[7].speedX !== 0){
+      // console.log('moviendose')
       return true
-    } 
+  } else if (arrayOfPlayers[i].x === 1300 || arrayOfPlayers[i].speedX === 0) {
+       return false
+  } else {
+    return false
   }
-  return false
-}
+  
+}}
 
 let showDoll1 = true;
-let roundCounter = 0
- function gameLogic1(){
-   setInterval(function () {
+
+
+let intervalTest = ""
+
+function dollAnimation(){
+    intervalTest = setInterval(function () {
     showDoll1 = !showDoll1
-    roundCounter++
-   },4000)
-   
- 
-   }
+  },4050)
+}
+
+const gamerOverDisplay = ()=>{
+  dollSoundLevel1.pause()
+  dollSoundLevel1.currentTime = 0
+  gameOverModal.style.display = "block"
+  clearInterval(intervalTest)
+  resetTimer()
+  ctx.font = "250px, Bungee Hairline, cursive"
+  ctx.fillText("Game Over", 100, 50)
+}
+
 
 function gameOver(){
-    if((roundCounter >= 1) && (roundCounter % 2 !== 0) && checkMovementPlayer()) {
-     dollSoundLevel1.pause()
-     gameOverModal.style.display = "block";
-     }
+  if (!showDoll1 && checkMovementPlayer()){
+    gamerOverDisplay()
+   
+
+  }
+  else if (realTime() == 0 && playerWin === false){
+   gamerOverDisplay()
+  }
+  else if (checkAllPlayersFinish()){
+    levelUp()
+  }
 }
+
+function levelUp(){
+  if (checkAllPlayersFinish() && realTime() > 0) {
+    dollSoundLevel1.pause()
+    dollSoundLevel1.currentTime = 0
+    resetTimer()
+    min = 00
+    sec = 60
+    levelUpModal.style.display = "block"
+    for (let i = 0; i < arrayOfPlayers.length; i++) {
+      arrayOfPlayers[i].x = 0 
+      arrayOfPlayers[i].speedX = 0     
+    }
+  }}
+
+  function startAgain(){
+    levelUpModal.style.display = "none"
+    dollSoundLevel1.play()
+  }
+
 
 const startGame = () => {
   leftDiv.style.display = "none"
@@ -257,8 +242,21 @@ const startGame = () => {
   dollSoundLevel1.loop = true
 
   startTimer()
-  gameLogic1()
+  dollAnimation()
   updateCanvas()
+}
+
+const playAgain = () =>{
+  gameOverModal.style.display = "none"
+  for(let i = 0; i < arrayOfPlayers.length; i++){
+    location.reload()
+  }
+}
+
+const playLevel2 = () => {
+  levelUpModal.style.display = "none"
+  dollSoundLevel1.play()
+  dollAnimation()
 }
 
 
@@ -269,31 +267,30 @@ const updateCanvas = ()=>{
     updatePlayers()
     checkMovementPlayer()
     gameOver()
+    levelUp()
 
     if(showDoll1){
       drawDoll1();
       
     }else{
       drawDoll2();
-
     }
-
+    // console.log(checkMovementPlayer())
     drawPlayers()
-    console.log(roundCounter)
   }
 requestAnimationFrame(updateCanvas) //Activa un loop infinito. Este loop va a l
 }
 
-console.log(checkMovementPlayer())
 
-
-// updateCanvas()
 
 
 window.addEventListener('load', (event) => { //event listeners, algun código que quieras que se ejecute   despues de la carga
   startButton.addEventListener('click', startGame )
 
-  
+  playAgainButton.addEventListener('click', playAgain )
+
+  playLevel2Button.addEventListener('click', startAgain)
+
 
   //Keyup Event
   document.addEventListener('keyup', (event)=> {
@@ -326,17 +323,14 @@ window.addEventListener('load', (event) => { //event listeners, algun código qu
     }
   })
 
-  //Keydown event // START GAME
+
   document.addEventListener('keydown', (event)=>{
     for(let i = 0; i < arrayOfPlayers.length; i++){
       if(event.which === 32){
         arrayOfPlayers[i].speedX = Math.random() * (1.5 - 0.5 +1) + 0.5
-      }
-    }
-  })
-
-  
-});
+      }}
+  })  
+})
 
 
 
@@ -345,25 +339,4 @@ window.addEventListener('load', (event) => { //event listeners, algun código qu
  //setInterval contador
  //cuando ese contador llegue a lo que tu quieres
  //se pinta una muñeca u otra
-
-
-//Doll Sound
-
-// let dollSoundLevel1 = ""
-// window.addEventListener('load', ()=>{
-//   dollSoundLevel1 = new Audio('/sounds/sound-8seconds.mp3')
-//   dollSoundLevel1.preload = 'auto'
-// })
-
-
-//Intro sound
-
-
-  // introSound = new Audio('./sounds/intro-sound.mp3')
-
-// function introPlay() {
-//   introSound.autoplay()
-// }
-
-// introPlay()
 

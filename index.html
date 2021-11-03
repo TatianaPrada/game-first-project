@@ -48,26 +48,46 @@
 
 
         <!-- Right div -->
-        <div id= "right_side">
-            <button class="button" id="sound-button">Sound </button>
-            <div id="stopwatch">
-                01:30
+            <div id= "right_side">
+                <button class="button" id="sound-button">Sound </button>
+                
+                <div id="stopwatch">
+                    01:30
+                </div>
+                    <ul>
+                    <li>Use 1-9 keyboard to move each player</li>
+                    <li>When all the players are safe, you win!</li>
+                </ul>
             </div>
-                   <ul>
-                <li>Use 1-9 keyboard to move each player</li>
-                <li>When all the players are safe, you win!</li>
-            </ul>
-        </div>
     </div>
+        
     <div id="gameOverModal" class="modal">
         <div class="modal-content">
-            <button id="re-start-button">Play Again</button>
+            <button id="re-start-button" class="start-again-button">Play Again</button>
             <p>Game Over!</p>
-          </div>
-        
-        </div>
+         </div>
+    </div>
+
+    <div id="level2-modal" class="modal">
+        <div class="level2-modal">
+            <p>Level 2</p>
+            <button id="continue">Play</button>
+            
+         </div>
+    </div>
+
+    <div id="youwin" class="modal">
+        <div class="level2-modal">
+            <p>You Win!</p>
+            <button id="re-start-button" class="start-again-button">Play Again</button>
+            
+         </div>
+
+    <!-- <a id="play-again-button" href="#" class='hideAll'></a>
+    </div> -->
 
     <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="time-counter.js"></script>
 
 </body>
 </html>
