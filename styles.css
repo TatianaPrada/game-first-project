@@ -5,12 +5,12 @@ body {
     background: rgb(28,10,46);
     background: linear-gradient(90deg, rgba(28,10,46,1) 0%, rgba(46,8,28,1) 51%, rgba(36,9,8,1) 100%);
 
-    font-family: 'Bungee Hairline', cursive;
+    font-family: 'Bungee Hairline';
 }
 
 #main_div {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     height: 92vh;
 }
@@ -27,7 +27,7 @@ body {
 #game-board {
     display: none;
     width: 1000px;
-    margin-right: 100px;
+    margin-right: 10px;
     margin-left: 100px;
     position:sticky;
 }
@@ -39,7 +39,7 @@ body {
 #left-side {
     /* background-color: tomato; */
     width: 20%;
-    height: 75%;
+    height: 70%;
     /* margin: 0 auto; */
     padding: 6% 0;
     display: flex;
@@ -53,8 +53,8 @@ body {
 #left-side h1 {
     text-align: center;
     padding: 0;
-    font-size: 2vw;
-    font-weight: 900;
+    font-size: 3vw;
+    font-weight: bolder;
 }
 
 #left-side li {
@@ -63,7 +63,6 @@ body {
     text-decoration: none;
     list-style: none;
     font-size: 1.25vw;
-
 }
 
 /* central div  */
@@ -74,7 +73,7 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     width: 48%;
-    height: 94%;
+    height: 95%;
     align-items: center;
     padding-left: 2px;
     display: flex;
@@ -110,26 +109,23 @@ body {
 /* right div */
 
 #right_side {
-    /* background-color: tomato; */
+    /* //background-color: tomato; */
     width: 20%;
     height: 95%;
-    /* margin: 0 auto; */
     padding: 0 0;
-    display: flex;
     background-color: rgba(0, 0, 0, 0.3);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: flex-start;
+    /*justify-content: flex-start;*/
 }
 
-#right_side li {
+#right_side h5 {
     text-align: left;
-    padding-top: 20px;
+    /* padding-top: 20px; */
     text-decoration: none;
     list-style: none;
     font-size: 1.25vw;
-
 }
 
 
@@ -141,20 +137,34 @@ body {
     transform: translate(-50%, -55%); */
 }
 
-/* #play-again-button {
-    font-size: 5vh;
-    display: flex;
-} */
 
 #sound-button {
     font-size: 0.8vw;
     width: 30%;
-    height: 10%;
+    height: 5%;
     text-align: center;
     padding-right: 1px;
     padding-left: 1px;
-    align-self:flex-start;
+    align-self:flex-start; 
+} 
+
+#spacebar {
+    width: 15vw;
+    border: 1px solid white;
 }
+
+#instructions-container {
+    display: flex;
+    height: 10vh;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.number-key {
+    width: 5vw;
+    border: 1px solid white;
+}
+
 
 /*Modal Game Over */
 
@@ -167,32 +177,36 @@ body {
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     /* overflow: auto; Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.2); Black w/ opacity */
+    /* background-color: rgb(0,0,0); Fallback color */
+    background-color: rgba(0,0,0,0.2); 
 }
-
   .modal-content {
-    /* background-color: */
-    margin: 30% auto; /* 15% from the top and centered */
+    margin: 25% auto; /* from the top and centered */
     padding: 20px;
-    border: 1px; solid #888;
+    border: 1px, solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
     display: flex;
     align-items: center;
     flex-direction: column;
 }
   
-  /* The Close Button */
+#game-over-message {
+    font-size: 3.5vw;
+    color: black;
+    font-weight: 700;
+}
+
 .start-again-button {
-    
-    font-size: 2vw;
+    background-color: transparent;
+    font-size: 4vw;
+    font-weight: 900;
     font-family: 'Bungee Hairline', cursive;
-    width: 30%;
+    width: 20%;
     height: 10%;
     text-align: center;
     padding-right: 1px;
     padding-left: 1px;
-    //align-self:flex-start;
+    border: 0;
 }
   
 .start-again-button:hover,
@@ -202,6 +216,5 @@ body {
     cursor: pointer;
   }
 
-  /*Modal Level 2*/
 
   

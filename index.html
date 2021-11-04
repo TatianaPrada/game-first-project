@@ -54,17 +54,28 @@
                 <div id="stopwatch">
                     01:30
                 </div>
-                    <ul>
-                    <li>Use 1-9 keyboard to move each player</li>
-                    <li>When all the players are safe, you win!</li>
-                </ul>
+                 <h5>Activate the movement of all players:</h5>
+                 <img src="/images/Spacebar.png" id= "spacebar" alt= "spacebar">
+                 <h5>Stop each player with:</h5>
+
+                 <div id="instructions-container">
+                     <img src="/images/number-1.png" class= "number-key" alt= "number 1">
+                     <h5>to</h5>
+                     <img src="/images/number-8.png" class= "number-key" alt= "number 8">
+
+                 </div>
+            
+
             </div>
     </div>
         
+
+    <!-- Modals -->
     <div id="gameOverModal" class="modal">
         <div class="modal-content">
+            <p id="game-over-message">Game Over!</p>
+            <p id="dead-players-message"></p>
             <button id="re-start-button" class="start-again-button">Play Again</button>
-            <p>Game Over!</p>
          </div>
     </div>
 
@@ -88,6 +99,8 @@
 
     <script type="text/javascript" src="script.js"></script>
     <script type="text/javascript" src="time-counter.js"></script>
+    <script type="text/javascript" src="players.js"></script>
+    <script type="text/javascript" src="doll.js"></script>
 
 </body>
 </html>
