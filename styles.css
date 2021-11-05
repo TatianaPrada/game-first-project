@@ -18,7 +18,7 @@ body {
 /* canvas */
 
 #canvas {
-    background-image: url(/images/game-background.jpeg);
+    background-image: url(./images/game-background.jpeg);
     background-size: cover;
     width: 100%;
 }
@@ -68,7 +68,7 @@ h2 {
 /* central div  */
 
 #game-intro {
-    background-image: url(/images/final-background.png);
+    background-image: url(./images/final-background.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
