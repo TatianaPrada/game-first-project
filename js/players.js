@@ -3,14 +3,14 @@
 const loadedImages = {}
 
 const imageLinks = [
-  {link: "../images/players/player_1.png", name: 'player1'},
-  {link: "../images/players/player_2.png", name: 'player2'},
-  {link: "../images/players/player_3.png", name: 'player3'},
-  {link: "../images/players/player_4.png", name: 'player4'},
-  {link: "../images/players/player_5.png", name: 'player5'},
-  {link: "../images/players/player_6.png", name: 'player6'},
-  {link: "../images/players/player_7.png", name: 'player7'},
-  {link: "../images/players/player_8.png", name: 'player8'}
+  {link: "./images/players/player_1.png", name: 'player1'},
+  {link: "./images/players/player_2.png", name: 'player2'},
+  {link: "./images/players/player_3.png", name: 'player3'},
+  {link: "./images/players/player_4.png", name: 'player4'},
+  {link: "./images/players/player_5.png", name: 'player5'},
+  {link: "./images/players/player_6.png", name: 'player6'},
+  {link: "./images/players/player_7.png", name: 'player7'},
+  {link: "./images/players/player_8.png", name: 'player8'}
 ]
 
 let counterForLoadedImages = 0; 
