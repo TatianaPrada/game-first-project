@@ -3,8 +3,7 @@ body {
   
     color: white;
     background: rgb(28,10,46);
-    background: linear-gradient(90deg, rgba(28,10,46,1) 0%, rgba(46,8,28,1) 51%, rgba(36,9,8,1) 100%);
-
+    background: linear-gradient(90deg, rgba(28,10,46,1) 20%, rgba(96,85,90,1) 50%, rgba(46,8,27,1) 70%, rgba(36,9,8,1) 100%);
     font-family: 'Bungee Hairline';
 }
 
@@ -19,17 +18,17 @@ body {
 /* canvas */
 
 #canvas {
-    background-image: url(/images/game_background.png);
+    background-image: url(/images/game-background.jpeg);
     background-size: cover;
     width: 100%;
 }
 
 #game-board {
     display: none;
-    width: 1000px;
-    margin-right: 10px;
-    margin-left: 100px;
-    position:sticky;
+    width: 1200px;
+    margin-right: 40px;
+    margin-left: 30px;
+    margin-top: 40px;
 }
 
 
@@ -37,60 +36,65 @@ body {
 /* letf side */
 
 #left-side {
-    /* background-color: tomato; */
     width: 20%;
-    height: 70%;
-    /* margin: 0 auto; */
-    padding: 6% 0;
+    height: 55%;
+    padding: 6% 2%;
     display: flex;
-    align-items: baseline;
+    align-items: center;
     flex-direction: column;
-    padding-right: 2%;
+    justify-content: center;
     background-color: rgba(0, 0, 0, 0.3);
 
 } 
 
-#left-side h1 {
-    text-align: center;
-    padding: 0;
-    font-size: 3vw;
-    font-weight: bolder;
+h1 {
+    font-size: 1.5vw;
+    font-weight: 900;
+    font-family: 'Press Start 2P';
+    letter-spacing: 2px; 
 }
 
-#left-side li {
-    text-align: left;
-    padding-top: 20px;
+
+h2 {
+    text-align: center;
     text-decoration: none;
     list-style: none;
-    font-size: 1.25vw;
+    font-size: 1.8vw;
 }
+
+
+
 
 /* central div  */
 
 #game-intro {
-    background-image: url(/images/new-background.jpeg);
+    background-image: url(/images/final-background.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     width: 48%;
-    height: 95%;
+    height: 100%;
     align-items: center;
     padding-left: 2px;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
+    margin-top: 2%;
 }
 
 .button {
     cursor: pointer;
     background-color: black;
     color: white;
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Press Start 2P';
     padding: 15px 10px;
-    animation: moveInBottom 5s ease-out;
     animation-fill-mode: backwards;
-    font-size: 1.2vw;
-    margin-top: 200px;
+    font-size: 1.3vw;
+}
+
+#start-button {
+    margin-bottom: 5%;
+    border: 1px solid;
 }
 
 .button:hover {
@@ -109,81 +113,105 @@ body {
 /* right div */
 
 #right_side {
-    /* //background-color: tomato; */
     width: 20%;
-    height: 95%;
-    padding: 0 0;
+    height: 55%;
+    padding: 6% 2%;
     background-color: rgba(0, 0, 0, 0.3);
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    /*justify-content: flex-start;*/
+    align-items: center; 
+    justify-content: center;
 }
-
-#right_side h5 {
-    text-align: left;
-    /* padding-top: 20px; */
-    text-decoration: none;
-    list-style: none;
-    font-size: 1.25vw;
-}
-
 
 #stopwatch {
-    font-size: 4vh;
-    /* position: absolute; */
-    /* top: 45%;
-    left: 50%;
-    transform: translate(-50%, -55%); */
+    font-family: 'Press Start 2P';
+    font-size: 3.5vh;
 }
 
 
-#sound-button {
-    font-size: 0.8vw;
-    width: 30%;
-    height: 5%;
-    text-align: center;
-    padding-right: 1px;
-    padding-left: 1px;
-    align-self:flex-start; 
-} 
+#sound {
+    display: flex;
+    width: 1.5px;
+    align-self: flex-start;
+    justify-self: flex-start;
+    margin-bottom: 15%;
+    padding-left: 8%;
+}
+
+#sound a{
+    display: flex;
+    width: 2px;
+    /* position: absolute; */
+    
+
+}
+
+#sound a img{
+    height: 50px;
+    position: relative;
+    transition: transform .3s;
+}
+
+#sound a img:hover{
+    transform: scale(1.2);
+}
+
+#sound-on{
+   
+    /* position: absolute; */
+    display: flex;
+    width: 2px;
+    
+}
+#sound-off {
+    /* position: absolute; */
+    display: flex;
+    width: 2px;
+}
+
+.hide {
+    display: none;
+}
+
+
+
 
 #spacebar {
-    width: 15vw;
-    border: 1px solid white;
+    width: 12vw;
+    margin-left: 19%;
+    /* border: 1px solid white; */
 }
 
 #instructions-container {
     display: flex;
     height: 10vh;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: row;
+
 }
 
 .number-key {
     width: 5vw;
-    border: 1px solid white;
+    align-self: center;
+    margin: 8px
 }
 
 
 /*Modal Game Over */
 
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 8; /* Sit on top */
+    display: none; 
+    position: fixed; 
+    z-index: 8; 
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    /* overflow: auto; Enable scroll if needed */
-    /* background-color: rgb(0,0,0); Fallback color */
-    background-color: rgba(0,0,0,0.2); 
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0,0,0,0.4); 
 }
-  .modal-content {
-    margin: 25% auto; /* from the top and centered */
-    padding: 20px;
-    border: 1px, solid #888;
+.modal-content1 {
+    margin-top: 14%; /* from the top and centered */
+    padding: 5px;
     width: 80%; /* Could be more or less, depending on screen size */
     display: flex;
     align-items: center;
@@ -191,22 +219,32 @@ body {
 }
   
 #game-over-message {
+    font-family: 'Press Start 2P';
     font-size: 3.5vw;
-    color: black;
+    font-weight: 900;
     font-weight: 700;
 }
 
+#dead-players-message {
+    font-size: 1.4vw;
+    font-family: 'Press Start 2P';
+    color: white;
+}
+
 .start-again-button {
-    background-color: transparent;
-    font-size: 4vw;
+    background-color: rgba(0,0,0,0.2); 
+    margin-top: 1.5%;
+    color: #76CBEA; /*cambiar más claro*/
+    font-size: 1.5vw;
+    line-height: 4vh;
     font-weight: 900;
-    font-family: 'Bungee Hairline', cursive;
-    width: 20%;
-    height: 10%;
+    font-family: 'Press Start 2P';
+    width: 12vw;
+    height: 10vh;
     text-align: center;
-    padding-right: 1px;
-    padding-left: 1px;
-    border: 0;
+    padding-right: 2px;
+    padding-left: 2px;
+    border: 1px solid rgba(46, 8, 28);
 }
   
 .start-again-button:hover,
@@ -217,4 +255,88 @@ body {
   }
 
 
+/* Modal Game win */
+
+#win-modal {
+    background-color: rgba(0,0,0,0.7); 
+}
+
+
+#congratulations {
+    color: #32AF1C;
+    font-size: 2.8vw;
+    font-weight: 900;
+    font-family: 'Press Start 2P';
+    letter-spacing: 2px; 
+}          
+
+
+.modal-content2 {
+    margin-top: 1%; /* from the top and centered */
+    margin: 6vh;
+    margin-top: 8%; 
+    padding: 1%;
+    width: 80%; /* Could be more or less, depending on screen size */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    /* background-color: rgb(0,0,0); Fallback color */
+    /* background-color: pink; */
+    
+}
+#piggy-img {
+    width: 25vw;
+}
+
+#saved-msg {
+    padding: 0;
+    margin: 10px;
+    font-size: 2.2vw;
+}
+
+@media (min-width: 1400px) and (max-width: 2000px) {
   
+    h1 {
+        font-size: 1.5vw;
+    }
+    h2 {
+        font-size: 1.4vw;
+    }
+    .button {
+        font-size: 1.5vw;
+    }
+    #spacebar {
+        width: 12vw;
+    }
+    .number-key {
+        width: 4.8vw;
+    }
+    #game-over-message {
+        font-size: 2.9vw;
+    }
+    #dead-players-message {
+        font-size: 1vw;
+        font-family: 'Press Start 2P';
+        color: white;
+    }
+    .start-again-button {
+        font-size: 1.1vw;
+        line-height: 3vh;
+        width: 10vw;
+        margin-top: 4%;
+    }
+    #congratulations {
+        font-size: 2.5vw;
+    }          
+    
+    #piggy-img {
+        width: 20vw;
+    }
+
+}
+
+@media (max-width: 1100px){
+#stopwatch {
+    font-size: 2vh;
+}
+}

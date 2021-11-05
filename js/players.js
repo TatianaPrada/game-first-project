@@ -26,6 +26,7 @@ imageLinks.forEach((imagen)=>{
   }
 })
 
+
 //Players Class
 class Players {
   constructor(ownY, ownName){
@@ -37,7 +38,8 @@ class Players {
     this.width = 110
     this.height = 170
     this.inMovement = false
-  }}
+  }
+}
 
 
 //Creating Players

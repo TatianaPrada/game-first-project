@@ -9,12 +9,16 @@ const centralDiv = document.getElementById("game-intro");
 const gameBoard = document.getElementById("game-board");
 const mainDiv = document.getElementById("main_div");
 const gameOverModal = document.getElementById("gameOverModal");
-const playAgainButton = document.getElementById("re-start-button");
-const levelUpModal = document.getElementById("level2-modal");
-const playLevel2Button = document.getElementById("continue");
+const playAgainButton = document.getElementById("re-start-button")
+const playAgainButton2 = document.getElementById("re-start-button1");
 const deadMessage = document.getElementById("dead-players-message");
+const winGameModal = document.getElementById("win-modal");
+const soundOn = document.getElementById("sound-on");
+soundOn.style.display = "none";
+const soundOff = document.getElementById("sound-off");
+soundOff.style.display = "none";
 
-//PLAYERS FUNCTIONS
+//PLAYERS MOVEMENT FUNCTIONS
 
 let playerWin = false;
 
@@ -55,11 +59,12 @@ let deadPlayers = [];
 
 function checkDeadPlayers() {
   for (let i = 0; i < arrayOfPlayers.length; i++) {
-    if (arrayOfPlayers[i].x !== 1300) {
+    if (arrayOfPlayers[i].speedX !== 0) {
       deadPlayers.push(arrayOfPlayers[i].name);
     }
   }
 }
+
 
 // DOLL FUNCTIONS
 
@@ -83,7 +88,7 @@ const writeDeadMessage = () => {
       if (i + 1 < deadPlayers.length) {
         eliminatedMessage += deadPlayers[i] + ",";
       } else {
-        eliminatedMessage += deadPlayers[i];
+        eliminatedMessage += "and " + deadPlayers[i];
       }
     }
     deadMessage.innerText = eliminatedMessage + " are eliminated";
@@ -92,15 +97,14 @@ const writeDeadMessage = () => {
 
 function checkMovementPlayer() {
   for (let i = 0; i < arrayOfPlayers.length; i++) {
-    // console.log(arrayOfPlayers[i].speedX);
-
-    if(arrayOfPlayers[i].x < 1300 && arrayOfPlayers[i].speedX > 0 ){
-      
-      return true
+    if (arrayOfPlayers[i].x < 1300 && arrayOfPlayers[i].speedX > 0) {
+      return true;
     }
   }
-  return false
+  return false;
 }
+
+
 
 const gamerOverDisplay = () => {
   dollSoundLevel1.pause();
@@ -118,25 +122,27 @@ const gamerOverDisplay = () => {
 let gameOverStatus = false;
 
 function gameOver() {
-
-  console.log('doll status' , showDoll1)
-  console.log('movement players' , checkMovementPlayer())
-
-  if (!showDoll1 && checkMovementPlayer() ===  true) {
-
-    console.log('condition 1')
+  if (!showDoll1 && checkMovementPlayer() === true) {
     gamerOverDisplay();
     gameOverStatus = true;
-
   } else if (realTime() == 0 && playerWin === false) {
-    console.log('condition 2')
     gamerOverDisplay();
     gameOverStatus = true;
-
   } else if (checkAllPlayersFinish()) {
-    console.log('condition 3')
     gameOverStatus = true;
-    //levelUp()
+  }
+}
+
+function gameWin() {
+  if (checkAllPlayersFinish() && realTime() > 0) {
+    dollSoundLevel1.pause();
+    stopTimer();
+    clearInterval(intervalTest);
+    winGameModal.style.display = "block";
+    for (let i = 0; i < arrayOfPlayers.length; i++) {
+      arrayOfPlayers[i].x = 0;
+      arrayOfPlayers[i].speedX = 0;
+    }
   }
 }
 
@@ -146,6 +152,7 @@ const startGame = () => {
   centralDiv.style.display = "none";
   gameBoard.style.display = "block";
   mainDiv.style.justifyContent = "flex-end";
+  soundOn.style.display = "block";
 
   dollSoundLevel1.play();
   dollSoundLevel1.loop = true;
@@ -155,47 +162,35 @@ const startGame = () => {
   updateCanvas();
 };
 
-// function levelUp(){
-//   if (checkAllPlayersFinish() && realTime() > 0) {
-//     dollSoundLevel1.pause()
-//     dollSoundLevel1.currentTime = 0
-//     resetTimer()
-//     min = 00
-//     sec = 60
-//     levelUpModal.style.display = "block"
-//     for (let i = 0; i < arrayOfPlayers.length; i++) {
-//       arrayOfPlayers[i].x = 0
-//       arrayOfPlayers[i].speedX = 0
-//     }
-//   }}
-
-// function startAgain(){
-//   levelUpModal.style.display = "none"
-//   dollSoundLevel1.play()
-// }
-
-const playAgain = () =>{
-  gameOverModal.style.display = "none"
-  for(let i = 0; i < arrayOfPlayers.length; i++){
-    location.reload()
+const playAgain = () => {
+  gameOverModal.style.display = "none";
+  for (let i = 0; i < arrayOfPlayers.length; i++) {
+    location.reload();
   }
-}
+};
 
-// const playLevel2 = () => {
-//   levelUpModal.style.display = "none"
-//   dollSoundLevel1.play()
-//   dollAnimation()
-// }
+//SOUND FUNCTIONS
+
+const muteSound = () => {
+  soundOn.style.display = "none";
+  soundOff.style.display = "block";
+  dollSoundLevel1.muted = true;
+};
+
+const unMuteSound = () => {
+  soundOn.style.display = "block";
+  soundOff.style.display = "none";
+  dollSoundLevel1.muted = false;
+};
 
 //EVENT LISTENERS
 
 window.addEventListener("load", (event) => {
-  //event listeners, algun código que quieras que se ejecute   despues de la carga
   startButton.addEventListener("click", startGame);
-
-  playAgainButton.addEventListener('click', playAgain )
-
-  // playLevel2Button.addEventListener("click", startAgain);
+  playAgainButton.addEventListener("click", playAgain);
+  playAgainButton2.addEventListener("click", playAgain);
+  soundOn.addEventListener("click", muteSound);
+  soundOff.addEventListener("click", unMuteSound);
 
   //Keyup Event
   document.addEventListener("keyup", (event) => {
@@ -226,18 +221,12 @@ window.addEventListener("load", (event) => {
     if (event.which === 57) {
       arrayOfPlayers[8].speedX = 0;
     }
-  })
-
-  //   const spacePress = ()=> {
-
-  // }
-  //   spacePress()
+  });
 
   document.addEventListener("keydown", (event) => {
     if (event.key === " " && gameOverStatus === false) {
       for (let i = 0; i < arrayOfPlayers.length; i++) {
         arrayOfPlayers[i].speedX = Math.random() * (1.5 - 0.5 + 1) + 0.5;
-        console.log(arrayOfPlayers[i].speedX);
       }
     }
   });
@@ -245,22 +234,44 @@ window.addEventListener("load", (event) => {
 
 const updateCanvas = () => {
   if (imageLinks.length === counterForLoadedImages) {
-    //  checkMovementPlayer();
     clearCanvas();
     updatePlayers();
     gameOver();
+    gameWin();
 
     if (showDoll1) {
       drawDoll1();
     } else {
       drawDoll2();
     }
-    // console.log(checkMovementPlayer())
     drawPlayers();
   }
-  requestAnimationFrame(updateCanvas); //Activa un loop infinito. Este loop va a l
+  requestAnimationFrame(updateCanvas);
 };
 
-//setInterval contador
-//cuando ese contador llegue a lo que tu quieres
-//se pinta una muñeca u otra
+//LEVEL 2 (IN PROCESS)
+
+// function levelUp(){
+//   if (checkAllPlayersFinish() && realTime() > 0) {
+//     dollSoundLevel1.pause()
+//     dollSoundLevel1.currentTime = 0
+//     resetTimer()
+//     min = 00
+//     sec = 60
+//     levelUpModal.style.display = "block"
+//     for (let i = 0; i < arrayOfPlayers.length; i++) {
+//       arrayOfPlayers[i].x = 0
+//       arrayOfPlayers[i].speedX = 0
+//     }
+//   }}
+
+// function startAgain(){
+//   levelUpModal.style.display = "none"
+//   dollSoundLevel1.play()
+// }
+
+// const playLevel2 = () => {
+//   levelUpModal.style.display = "none"
+//   dollSoundLevel1.play()
+//   dollAnimation()
+// }

@@ -1,106 +1,106 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Game</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Bungee+Hairline&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Bungee+Hairline&display=swap');
     </style>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-        </style>
-     <link rel='stylesheet' type='text/css' media='screen' href='/styles.css'>
-    
-    
+    </style>
+    <link rel='stylesheet' type='text/css' media='screen' href='/styles.css'>
+
+
 </head>
 
 <body>
 
-  
 
-    <div id= "main_div">
-        
+
+    <div id="main_div">
+
         <div id="game-board">
             <canvas id="canvas" width="1500" height="1000"></canvas>
         </div>
 
 
-        <!-- Left div --> 
-        <div id="left-side"> 
+        <!-- Left div -->
+        <div id="left-side">
 
-            <h1>Red light, Green light</h1>
-            <ul>
-                <li>Move all players until the red line</li>
-                <li>Don't move the players while the doll is loking to you</li>
-                
-            </ul>
+
+            <h1>Intructions</h1>
+            <h2>Move all players until the green line before the time ends</h2>
+            <h2>The players only can move while the doll is singing!</h2>
 
         </div>
 
         <!-- Central div -->
 
-        <div id="game-intro" >
-    
-            <button id= "start-button" class="button" >Start Game</button>
+        <div id="game-intro">
+
+            <button id="start-button" class="button">Start Game</button>
         </div>
 
 
         <!-- Right div -->
-            <div id= "right_side">
-                <button class="button" id="sound-button">Sound </button>
-                
-                <div id="stopwatch">
-                    01:30
-                </div>
-                 <h5>Activate the movement of all players:</h5>
-                 <img src="/images/Spacebar.png" id= "spacebar" alt= "spacebar">
-                 <h5>Stop each player with:</h5>
-
-                 <div id="instructions-container">
-                     <img src="/images/number-1.png" class= "number-key" alt= "number 1">
-                     <h5>to</h5>
-                     <img src="/images/number-8.png" class= "number-key" alt= "number 8">
-
-                 </div>
-            
-
+        <div id="right_side">
+            <div id="sound">
+                <a id="sound-on" href="#" class="hide">
+                    <img src="./images/sound-on.png">
+                </a>
+                <a id="sound-off" href="#" class="hide">
+                    <img src="./images/sound-off.png">
+                </a>
             </div>
+
+
+            <div id="stopwatch"> 01:30</div>
+
+            <div>
+                <h2>Activate the movement of all players:</h2>
+                <img src="./images/spacebar-image.png" id="spacebar" alt="spacebar">
+                <h2>Stop each player with:</h2>
+
+                <div id="instructions-container">
+                    <img src="./images/number1.png" class="number-key" alt="number 1">
+                    <h2>to</h2>
+                    <img src="./images/number8.png" class="number-key" alt="number 8">
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- Modals -->
+        <div id="gameOverModal" class="modal">
+            <div class="modal-content1">
+                <h1 id="game-over-message">Game Over!</h1>
+                <h2 id="dead-players-message"></h2>
+                <button id="re-start-button" class="start-again-button">Play Again</button>
+            </div>
+        </div>
+
+        <div id="win-modal" class="modal">
+            <div class="modal-content2">
+                <h1 id="congratulations">Congratulations!</h1>
+                <img id= "piggy-img" src="./images/piggy.png" alt="piggy">
+                <h2 id="saved-msg">You saved all the players lifes</h2>
+                <button id="re-start-button1" class="start-again-button">Play Again</button>
+            </div>
+
+        </div>
+
     </div>
-        
-
-    <!-- Modals -->
-    <div id="gameOverModal" class="modal">
-        <div class="modal-content">
-            <p id="game-over-message">Game Over!</p>
-            <p id="dead-players-message"></p>
-            <button id="re-start-button" class="start-again-button">Play Again</button>
-         </div>
-    </div>
-
-    <div id="level2-modal" class="modal">
-        <div class="level2-modal">
-            <p>Level 2</p>
-            <button id="continue">Play</button>
-            
-         </div>
-    </div>
-
-    <div id="youwin" class="modal">
-        <div class="level2-modal">
-            <p>You Win!</p>
-            <button id="re-start-button" class="start-again-button">Play Again</button>
-            
-         </div>
-
-    <!-- <a id="play-again-button" href="#" class='hideAll'></a>
-    </div> -->
-
-    <script type="text/javascript" src="script.js"></script>
-    <script type="text/javascript" src="time-counter.js"></script>
-    <script type="text/javascript" src="players.js"></script>
-    <script type="text/javascript" src="doll.js"></script>
+    <script type="text/javascript" src="./js/script.js"></script>
+    <script type="text/javascript" src="./js/time-counter.js"></script>
+    <script type="text/javascript" src="./js/players.js"></script>
+    <script type="text/javascript" src="./js/doll.js"></script>
 
 </body>
+
 </html>
