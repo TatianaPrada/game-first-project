@@ -81,7 +81,7 @@ function dollAnimation() {
 
 const writeDeadMessage = () => {
   if (deadPlayers.length == 1) {
-    deadMessage.innerText = `The player ${deadPlayer[0]} is eliminated`;
+    deadMessage.innerText = `The player ${deadPlayer[0]} has been eliminated`;
   } else {
     let eliminatedMessage = "The players ";
     for (let i = 0; i < deadPlayers.length; i++) {
@@ -91,7 +91,7 @@ const writeDeadMessage = () => {
         eliminatedMessage += "and " + deadPlayers[i];
       }
     }
-    deadMessage.innerText = eliminatedMessage + " are eliminated";
+    deadMessage.innerText = eliminatedMessage + " have benn eliminated";
   }
 };
 
