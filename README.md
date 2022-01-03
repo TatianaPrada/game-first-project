@@ -17,7 +17,7 @@ _Red light and green light is a game inspired in the "Squid Game" series, ilustr
 **The objective of the game is all squid game players arrived to the save zone (green line) before the time is over:**
 
 1. Press the "Start" button and be sure you can listen the sound of the game. 🔈
-2. Activate the movement of all players with the space bar. <img width="60em" src="./images/spacebar-image.png">
+2. Activate the movement of all players with the space bar. <img width="80em" src="./images/spacebar-image.png">
 
 3. The players only can be in movement while the doll is singing, you have to stop each player pressing the corresponding number key:
 
@@ -25,11 +25,11 @@ _Red light and green light is a game inspired in the "Squid Game" series, ilustr
 
 <img width="40em" src="./images/evil_doll_2.png"> The doll stops to sing when she is looking to you. Be sure that you have all the players stoped.
 
-<img width="40em" src="./images/evil_doll_1.png">  4. When the doll starts to sing again, you can activate the player's movement. 
+ 4. When the doll starts to sing again, you can activate the player's movement. 
 
-Be sure to stop again all the players when the doll stop to sing. 
+  * Be sure to stop again all the players when the doll stop to sing. 
 
-You can repeat these steps until the time is over.
+  * You can repeat these steps until the time is over.
 
 ---
 
