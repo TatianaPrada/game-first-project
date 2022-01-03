@@ -91,7 +91,7 @@ const writeDeadMessage = () => {
         eliminatedMessage += "and " + deadPlayers[i];
       }
     }
-    deadMessage.innerText = eliminatedMessage + " have benn eliminated";
+    deadMessage.innerText = eliminatedMessage + " have been eliminated";
   }
 };
 
