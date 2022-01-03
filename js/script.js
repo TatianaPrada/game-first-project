@@ -46,7 +46,7 @@ const clearCanvas = () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 };
 
-function checkAllPlayersFinish() {
+const checkAllPlayersFinish = () => {
   for (let i = 0; i < arrayOfPlayers.length; i++) {
     if (arrayOfPlayers[i].x !== 1300) {
       return false;
@@ -57,14 +57,13 @@ function checkAllPlayersFinish() {
 
 let deadPlayers = [];
 
-function checkDeadPlayers() {
+const checkDeadPlayers = () => {
   for (let i = 0; i < arrayOfPlayers.length; i++) {
     if (arrayOfPlayers[i].speedX !== 0) {
       deadPlayers.push(arrayOfPlayers[i].name);
     }
   }
 }
-
 
 // DOLL FUNCTIONS
 
@@ -95,7 +94,7 @@ const writeDeadMessage = () => {
   }
 };
 
-function checkMovementPlayer() {
+const checkMovementPlayer = () => {
   for (let i = 0; i < arrayOfPlayers.length; i++) {
     if (arrayOfPlayers[i].x < 1300 && arrayOfPlayers[i].speedX > 0) {
       return true;
@@ -103,8 +102,6 @@ function checkMovementPlayer() {
   }
   return false;
 }
-
-
 
 const gamerOverDisplay = () => {
   dollSoundLevel1.pause();
@@ -121,7 +118,7 @@ const gamerOverDisplay = () => {
 
 let gameOverStatus = false;
 
-function gameOver() {
+const gameOver = () => {
   if (!showDoll1 && checkMovementPlayer() === true) {
     gamerOverDisplay();
     gameOverStatus = true;
@@ -133,7 +130,7 @@ function gameOver() {
   }
 }
 
-function gameWin() {
+const gameWin = () => {
   if (checkAllPlayersFinish() && realTime() > 0) {
     dollSoundLevel1.pause();
     stopTimer();
@@ -248,30 +245,3 @@ const updateCanvas = () => {
   }
   requestAnimationFrame(updateCanvas);
 };
-
-//LEVEL 2 (IN PROCESS)
-
-// function levelUp(){
-//   if (checkAllPlayersFinish() && realTime() > 0) {
-//     dollSoundLevel1.pause()
-//     dollSoundLevel1.currentTime = 0
-//     resetTimer()
-//     min = 00
-//     sec = 60
-//     levelUpModal.style.display = "block"
-//     for (let i = 0; i < arrayOfPlayers.length; i++) {
-//       arrayOfPlayers[i].x = 0
-//       arrayOfPlayers[i].speedX = 0
-//     }
-//   }}
-
-// function startAgain(){
-//   levelUpModal.style.display = "none"
-//   dollSoundLevel1.play()
-// }
-
-// const playLevel2 = () => {
-//   levelUpModal.style.display = "none"
-//   dollSoundLevel1.play()
-//   dollAnimation()
-// }

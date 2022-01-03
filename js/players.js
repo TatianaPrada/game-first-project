@@ -41,7 +41,6 @@ class Players {
   }
 }
 
-
 //Creating Players
 
 let arrayOfPlayers = []
