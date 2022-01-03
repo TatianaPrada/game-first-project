@@ -1,40 +1,40 @@
-
 body {
-  
     color: white;
     background: rgb(28,10,46);
     background: linear-gradient(90deg, rgba(28,10,46,1) 20%, rgba(96,85,90,1) 50%, rgba(46,8,27,1) 70%, rgba(36,9,8,1) 100%);
     font-family: 'Bungee Hairline';
 }
 
+.hidden {
+    display: none;
+}
+
 #main_div {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     height: 84vh;
     margin-top: 2%;
+    margin-left: 2%;
 }
-
 
 /* canvas */
 
 #canvas {
     background-image: url(./images/game-background.jpeg);
     background-size: cover;
-    width: 100%;
+    width: 90%;
 }
 
 #game-board {
     display: none;
-    width: 950px;
-    margin-right: 4%;
+    width: 70%;
+    margin-right: 10px;
     margin-left: 30px;
     margin-top: 40px;
 }
 
-
-
-/* letf side */
+/* letf section */
 
 #left-side {
     width: 20%;
@@ -45,7 +45,6 @@ body {
     flex-direction: column;
     justify-content: center;
     background-color: rgba(0, 0, 0, 0.3);
-
 } 
 
 h1 {
@@ -55,16 +54,12 @@ h1 {
     letter-spacing: 2px; 
 }
 
-
 h2 {
     text-align: center;
     text-decoration: none;
     list-style: none;
     font-size: 1.8vw;
 }
-
-
-
 
 /* central div  */
 
@@ -108,9 +103,6 @@ h2 {
   transform: translateY(4px);
 }
 
-
-
-
 /* right div */
 
 #right_side {
@@ -122,6 +114,7 @@ h2 {
     flex-direction: column;
     align-items: center; 
     justify-content: center;
+    margin-right: 2%;
 }
 
 #stopwatch {
@@ -142,9 +135,6 @@ h2 {
 #sound a{
     display: flex;
     width: 2px;
-    /* position: absolute; */
-    
-
 }
 
 #sound a img{
@@ -158,14 +148,11 @@ h2 {
 }
 
 #sound-on{
-   
-    /* position: absolute; */
     display: flex;
     width: 2px;
     
 }
 #sound-off {
-    /* position: absolute; */
     display: flex;
     width: 2px;
 }
@@ -174,13 +161,9 @@ h2 {
     display: none;
 }
 
-
-
-
 #spacebar {
     width: 12vw;
     margin-left: 19%;
-    /* border: 1px solid white; */
 }
 
 #instructions-container {
@@ -197,7 +180,6 @@ h2 {
     margin: 8px
 }
 
-
 /*Modal Game Over */
 
 .modal {
@@ -211,9 +193,9 @@ h2 {
     background-color: rgba(0,0,0,0.4); 
 }
 .modal-content1 {
-    margin-top: 14%; /* from the top and centered */
+    margin-top: 14%;
     padding: 5px;
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 80%; 
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -256,12 +238,11 @@ h2 {
   }
 
 
-/* Modal Game win */
+/* Modal Game winner */
 
 #win-modal {
     background-color: rgba(0,0,0,0.7); 
 }
-
 
 #congratulations {
     color: #32AF1C;
@@ -273,18 +254,16 @@ h2 {
 
 
 .modal-content2 {
-    margin-top: 1%; /* from the top and centered */
+    margin-top: 1%; 
     margin: 6vh;
     margin-top: 8%; 
     padding: 1%;
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 80%; 
     display: flex;
     align-items: center;
-    flex-direction: column;
-    /* background-color: rgb(0,0,0); Fallback color */
-    /* background-color: pink; */
-    
+    flex-direction: column;  
 }
+
 #piggy-img {
     width: 25vw;
 }
@@ -296,12 +275,12 @@ h2 {
 }
 
 #footer {
-
     display: flex;
     justify-content: flex-end;
-    margin-right: 8%;
+    margin-right: 3%;
     height: 8vh;
-
+    margin-right: 10%;
+    position: sticky;
 }
 .links {
     width: 3.5vw;
@@ -309,8 +288,10 @@ h2 {
    
 }
 
-@media (min-width: 1400px) and (max-width: 2000px) {
-  
+@media (min-width: 1100px) and (max-width: 2000px) {
+    #game-intro{
+        width: 40%;
+    }
     h1 {
         font-size: 1.5vw;
     }
@@ -348,14 +329,23 @@ h2 {
         width: 20vw;
     }
     #canvas {
-        width: 100%;
+        width: 97%;
     }
 
     #game-board {
         width: 65vw;
         margin-right: 4%;
     }
-    
+    #footer {
+        margin-right: 12%;
+        position: sticky;
+    }
+    .links {
+        width: 6vh;
+    }
+    #right_side {
+        margin-right: 4%;
+    }
 
 }
 
@@ -363,4 +353,39 @@ h2 {
 #stopwatch {
     font-size: 2vh;
 }
+}
+
+@media only screen and (max-width: 1024px){
+    html {
+        background-color: white;
+    }
+
+    body {
+        color: black;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+    .hidden {
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+    }
+
+    .hidden .title {
+        font-size: 1.3rem;
+        letter-spacing: 1px;
+        line-height: 30px;
+        text-align: center;
+        font-weight: 800;
+    }
+    .hidden p {
+        font-size: 1.3rem;
+        margin-left: 2%;
+    }
+
+    #main_div {
+        display: none;
+    }
+    #footer {
+        display: none;
+    }
 }

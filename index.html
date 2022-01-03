@@ -12,106 +12,106 @@
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
         </style>
-        <link rel='stylesheet' type='text/css' media='screen' href='./styles.css'>
+        <link rel='stylesheet' type='text/css' media='screen'
+            href='./styles.css'>
         <link rel="icon" href="./images/evil_doll_2.png">
-
-
     </head>
 
-<body>
-
-
-
-    <div id="main_div">
-
-        <div id="game-board">
-            <canvas id="canvas" width="1500" height="1000"></canvas>
-        </div>
-
-
-        <!-- Left div -->
-        <div id="left-side">
-
-
-            <h1>Intructions</h1>
-            <h2>Move all players until the green line before the time ends</h2>
-            <h2>The players only can move while the doll is singing!</h2>
-
-        </div>
-
-        <!-- Central div -->
-
-        <div id="game-intro">
-
-            <button id="start-button" class="button">Start Game</button>
-        </div>
-
-
-        <!-- Right div -->
-        <div id="right_side">
-            <div id="sound">
-                <a id="sound-on" href="#" class="hide">
-                    <img src="./images/sound-on.png">
-                </a>
-                <a id="sound-off" href="#" class="hide">
-                    <img src="./images/sound-off.png">
-                </a>
+    <body>
+        <div id="main_div">
+            <div id="game-board">
+                <canvas id="canvas" width="1500" height="1000"></canvas>
             </div>
 
+            <!-- Left div -->
+            <div id="left-side">
+                <h1>Intructions</h1>
+                <h2>Move all players until the green line before the time ends</h2>
+                <h2>The players only can move while the doll is singing!</h2>
+            </div>
 
-            <div id="stopwatch"> 01:30</div>
+            <!-- Central div -->
 
-            <div>
-                <h2>Activate the movement of all players:</h2>
-                <img src="./images/spacebar-image.png" id="spacebar" alt="spacebar">
-                <h2>Stop each player with:</h2>
+            <div id="game-intro">
+                <button id="start-button" class="button">Start Game</button>
+            </div>
 
-                <div id="instructions-container">
-                    <img src="./images/number1.png" class="number-key" alt="number 1">
-                    <h2>to</h2>
-                    <img src="./images/number8.png" class="number-key" alt="number 8">
+            <!-- Right div -->
+            <div id="right_side">
+                <div id="sound">
+                    <a id="sound-on" href="#" class="hide">
+                        <img src="./images/sound-on.png">
+                    </a>
+                    <a id="sound-off" href="#" class="hide">
+                        <img src="./images/sound-off.png">
+                    </a>
+                </div>
 
+                <div id="stopwatch"> 01:30</div>
+
+                <div>
+                    <h2>Activate the movement of all players:</h2>
+                    <img src="./images/spacebar-image.png" id="spacebar"
+                        alt="spacebar">
+                    <h2>Stop each player with:</h2>
+
+                    <div id="instructions-container">
+                        <img src="./images/number1.png" class="number-key"
+                            alt="number 1">
+                        <h2>to</h2>
+                        <img src="./images/number8.png" class="number-key"
+                            alt="number 8">
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Modals -->
+
+            <div id="gameOverModal" class="modal">
+                <div class="modal-content1">
+                    <h1 id="game-over-message">Game Over!</h1>
+                    <h2 id="dead-players-message"></h2>
+                    <button id="re-start-button" class="start-again-button">Play
+                        Again</button>
+                </div>
+            </div>
+
+            <div id="win-modal" class="modal">
+                <div class="modal-content2">
+                    <h1 id="congratulations">Congratulations!</h1>
+                    <img id="piggy-img" src="./images/piggy.png" alt="piggy">
+                    <h2 id="saved-msg">You saved all the players lifes</h2>
+                    <button id="re-start-button1" class="start-again-button">Play
+                        Again</button>
                 </div>
             </div>
 
         </div>
 
-
-        <!-- Modals -->
-        <div id="gameOverModal" class="modal">
-            <div class="modal-content1">
-                <h1 id="game-over-message">Game Over!</h1>
-                <h2 id="dead-players-message"></h2>
-                <button id="re-start-button" class="start-again-button">Play Again</button>
-            </div>
+        <div id="footer">
+            <a class= "icon" id="github" href="https://github.com/TatianaPrada"
+                target="_blank">
+                <img src="./images/github-icon.png" class="links">
+            </a>
+            <a class= "icon" id="linkedin"
+                href="https://www.linkedin.com/in/tatiana-prada-51930b1aa/"
+                target="_blank">
+                <img src="./images/linkedin-logo.gif" class="links">
+            </a>
         </div>
 
-        <div id="win-modal" class="modal">
-            <div class="modal-content2">
-                <h1 id="congratulations">Congratulations!</h1>
-                <img id= "piggy-img" src="./images/piggy.png" alt="piggy">
-                <h2 id="saved-msg">You saved all the players lifes</h2>
-                <button id="re-start-button1" class="start-again-button">Play Again</button>
-            </div>
-
+        <div class="hidden">
+            <p class="title">Please open the game from your computer</p>
+            <p >Mobile version is in progress</p>
+            <img src="https://media.giphy.com/media/xUA7aO0PLIyJffDln2/giphy.gif" alt= "in progress">
         </div>
 
-    </div>
+        <script type="text/javascript" src="./js/script.js"></script>
+        <script type="text/javascript" src="./js/time-counter.js"></script>
+        <script type="text/javascript" src="./js/players.js"></script>
+        <script type="text/javascript" src="./js/doll.js"></script>
 
-    <div id="footer">
-        <a id="github" href="https://github.com/TatianaPrada" target="_blank">
-            <img src="./images/github-icon.png" class="links">
-        </a>
-        <a id="linkedin" href="https://www.linkedin.com/in/tatiana-prada-51930b1aa/" target="_blank">
-            <img src="./images/linkedin-logo.gif" class="links">
-        </a>
-    </div>
-  
-    <script type="text/javascript" src="./js/script.js"></script>
-    <script type="text/javascript" src="./js/time-counter.js"></script>
-    <script type="text/javascript" src="./js/players.js"></script>
-    <script type="text/javascript" src="./js/doll.js"></script>
-
-</body>
+    </body>
 
 </html>
