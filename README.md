@@ -12,7 +12,7 @@ _Red light and green light is a game inspired in the "Squid Game" series, ilustr
 
 ---
 
-## Instruccions
+## Instructions
 
 **The objective of the game is all squid game players arrived to the save zone (green line) before the time is over:**
 
